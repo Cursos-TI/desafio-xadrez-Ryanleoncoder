@@ -1,5 +1,5 @@
 // Movimentando as Peças do xadrez
-// nivel aventureiro
+// NIVEL AVENTUREIRO
 
 /* 
 Torre: Move-se em linha reta horizontalmente ou verticalmente. 
@@ -19,44 +19,46 @@ int main() {
     int torre, bispo, rainha, cavalo;
 
     for (torre = 1; torre <= 5; torre++) {
-        printf("♖ Torre  se moveu para a direita %d casa(s)\n", torre);
+        printf("♖ direita\n");
     }
+
+    printf("\n"); 
 
     bispo = 1;
     while (bispo <= 5) {
-        printf("♗ Bispo se moveu para cima e para direita %d casa(s)\n", bispo);
+        printf("♗ cima e direita\n");
         bispo++;
     }
+
+    printf("\n"); 
 
     rainha = 1;
     
     do
     {
-        printf("♕ Rainha  se moveu para a esquerda %d casa(s)\n", rainha);
+        printf("♕ esquerda\n");
         rainha++;
 
     } while (rainha <= 8);
 
-    cavalo = 1;
-    int i, j;
+    // Movimento do Cavalo (2 para baixo, 1 para esquerda)
+    printf("\n"); 
 
-    for (i = 1; i <= cavalo; i++) {
-        int casasbaixo = 2;
-        int casasesquerda = 1;
+    int casas_baixo = 2;
+    int casas_esquerda = 1;
 
-        for (j = 1; j <= casasbaixo; j++) {
-            printf("♞ baixo\n");
+    for (int i = 1; i <= casas_baixo; i++) {
+        printf("♞ baixo\n");
+        // Quando chegar na última casa para baixo, faz o movimento para a esquerda
+        if (i == casas_baixo) {
+            int j = 1;
+            while (j <= casas_esquerda) {
+                printf("♞ esquerda\n");
+                j++;
+            }
         }
-        
-        int k = 1;
-        while (k <= casasesquerda) {
-            printf("♞ esquerda\n");
-            k++;
-            printf("\n");
-        }
-
-        printf("\n");
     }
+
     return 0;
     
 
