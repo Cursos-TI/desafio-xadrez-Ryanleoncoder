@@ -1,5 +1,5 @@
 // Movimentando as Peças do xadrez
-// NIVEL MESTRE
+// NIVEL mestre
 
 /* 
 Torre: Move-se em linha reta horizontalmente ou verticalmente.
@@ -19,18 +19,31 @@ Cavalo: Duas casas para cima e uma para a direita, usando loops aninhados e múl
 
 // Torre - função recursiva
 void torremove(int casas) {
+    // Caso base: não há mais casas para mover
     if (casas == 0) {
         printf("\n");
         return;
     }
-    printf("♖ direita\n");
-    torremove(casas - 1);
+    printf("♖ 1 casa para a direita\n");
+    torremove(casas - 1); // Passo recursivo
 }
 
+// Bispo - função recursiva
+void bispo_recursivo(int casas) {
+    // Caso base: não há mais casas para mover
+    if (casas == 0) {
+        printf("\n");
+        return;
+    }
+    printf("♗ 1 casa na diagonal (cima e direita)\n");
+    bispo_recursivo(casas - 1); // Passo recursivo
+}
+
+// Bispo - loops aninhados (externo vertical, interno horizontal)
 void bispo_loops(int casas) {
-    for (int i = 1; i <= casas; i++) {
-        for (int j = 1; j <= 1; j++) { 
-            printf("♗ cima e direita\n");
+    for (int i = 1; i <= casas; i++) { // Movimento vertical
+        for (int j = 1; j <= 1; j++) { // Movimento horizontal (apenas 1 por diagonal)
+            printf("♗ 1 casa na diagonal (cima e direita)\n");
         }
     }
     printf("\n");
@@ -38,21 +51,31 @@ void bispo_loops(int casas) {
 
 // Rainha - função recursiva
 void rainhamove(int casas) {
+    // Caso base: não há mais casas para mover
     if (casas == 0) {
         printf("\n");
         return;
     }
-    printf("♕ esquerda\n");
-    rainhamove(casas - 1);
+    printf("♕ 1 casa para a esquerda\n");
+    rainhamove(casas - 1); // Passo recursivo
 }
 
 // Cavalo - loops aninhados, múltiplas variáveis/condições
 void cavalomove() {
-    for (int i = 1; i <= 2; i++) {
-        printf("♞ cima\n");
-        if (i < 2) continue; 
-        for (int j = 1; j <= 1; j++) {
-            printf("♞ direita\n");
+    // Movimento: duas casas para cima e uma para a direita
+    int casas_cima = 2;
+    int casas_direita = 1;
+    int passo = 0;
+
+    for (int i = 1; i <= casas_cima; i++) {
+        printf("♞ 1 casa para cima\n");
+        passo++;
+        // Se ainda não chegou ao segundo passo, continue subindo
+        if (passo < casas_cima) continue;
+        // Após subir duas casas, move para a direita
+        for (int j = 1; j <= casas_direita; j++) {
+            printf("♞ 1 casa para a direita\n");
+            // Exemplo de uso de break (não necessário aqui, mas ilustrativo)
             if (j == 1) break;
         }
     }
@@ -64,8 +87,12 @@ int main() {
     printf("Movimento da Torre:\n");
     torremove(5);
 
+    // Bispo recursivo
+    printf("Movimento do Bispo (recursivo):\n");
+    bispo_recursivo(5);
+
     // Bispo com loops aninhados
-    printf("Movimento do Bispo:\n");
+    printf("Movimento do Bispo (loops aninhados):\n");
     bispo_loops(5);
 
     // Rainha
