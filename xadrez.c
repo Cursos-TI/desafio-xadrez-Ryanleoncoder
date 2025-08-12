@@ -1,5 +1,5 @@
 // Movimentando as Peças do xadrez
-// NIVEL NOVATO
+// nivel aventureiro
 
 /* 
 Torre: Move-se em linha reta horizontalmente ou verticalmente. 
@@ -16,7 +16,7 @@ Seu programa deverá simular o movimento da Rainha oito casas para a esquerda.
 
 int main() {
 
-    int torre, bispo, rainha;
+    int torre, bispo, rainha, cavalo;
 
     for (torre = 1; torre <= 5; torre++) {
         printf("♖ Torre  se moveu para a direita %d casa(s)\n", torre);
@@ -36,6 +36,28 @@ int main() {
         rainha++;
 
     } while (rainha <= 8);
-    
+
+    cavalo = 1;
+    int i, j;
+
+    for (i = 1; i <= cavalo; i++) {
+        int casasbaixo = 2;
+        int casasesquerda = 1;
+
+        for (j = 1; j <= casasbaixo; j++) {
+            printf("♞ baixo\n");
+        }
+        
+        int k = 1;
+        while (k <= casasesquerda) {
+            printf("♞ esquerda\n");
+            k++;
+            printf("\n");
+        }
+
+        printf("\n");
+    }
     return 0;
+    
+
 }
